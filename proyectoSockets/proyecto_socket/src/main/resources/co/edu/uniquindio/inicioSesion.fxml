@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.Controller.InicioSesionController">
+   <children>
+      <Text layoutX="194.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inicia sesión">
+         <font>
+            <Font name="Berlin Sans FB" size="87.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txt_nombre" layoutX="202.0" layoutY="186.0" prefHeight="29.0" prefWidth="396.0" promptText="Ingrese su nombre" style="-fx-background-radius: 20;" />
+      <PasswordField fx:id="txt_contrasenia" layoutX="202.0" layoutY="250.0" prefHeight="30.0" prefWidth="396.0" promptText="Ingrese la contraseña" style="-fx-background-radius: 20;" />
+      <Button fx:id="btn_ingresar" layoutX="326.0" layoutY="345.0" mnemonicParsing="false" onAction="#btn_ingresar" prefHeight="51.0" prefWidth="148.0" style="-fx-background-radius: 20; -fx-border-color: #000000; -fx-border-radius: 20;" text="Ingresar">
+         <font>
+            <Font name="Berlin Sans FB" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

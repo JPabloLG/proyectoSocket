@@ -4,4 +4,7 @@ module co.edu.uniquindio {
 
     opens co.edu.uniquindio to javafx.fxml;
     exports co.edu.uniquindio;
+
+    opens co.edu.uniquindio.Controller;
+    exports co.edu.uniquindio.Controller;
 }
