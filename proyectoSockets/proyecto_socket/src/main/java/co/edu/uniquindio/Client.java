@@ -11,6 +11,7 @@ public class Client {
     public static void main(String[] args) {
         String hostname = "localhost";
         int port = 12345;
+        System.out.println("¡CLIENTE INICIADO!");
 
         try (Socket socket = new Socket(hostname, port);
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
@@ -20,6 +21,7 @@ public class Client {
             String userInput;
             userInput = stdIn.readLine();
             out.println(userInput);
+
             
             System.out.println("Respuesta del servidor: " + in.readLine());
         } catch (IOException e) {
