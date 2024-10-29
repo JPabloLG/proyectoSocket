@@ -18,7 +18,6 @@ public class Client {
             BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in))) {
 
             String userInput;
-            System.out.println("Escribe las credenciales en format 'usuario:contraseña':");
             userInput = stdIn.readLine();
             out.println(userInput);
             

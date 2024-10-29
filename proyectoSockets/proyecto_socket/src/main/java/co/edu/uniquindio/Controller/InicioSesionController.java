@@ -8,7 +8,6 @@ import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.Client;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -38,15 +37,14 @@ public class InicioSesionController {
         String contrasena = txt_contrasenia.getText();
         String entrada = usuario + ":" + contrasena;
 
-        // Crear un hilo para manejar la conexión al servidor
         new Thread(() -> {
             try (Socket socket = new Socket("localhost", 12345);
                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 
-                out.println(usuario + ":" + contrasena); // Enviar credenciales
-
-                String respuesta = in.readLine(); // Leer respuesta del servidor
+                out.println(entrada);
+                String respuesta = in.readLine();
+                System.out.println("Respuesta del servidor: "+respuesta);
             } catch (IOException e) {
                 e.printStackTrace();
             }
