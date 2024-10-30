@@ -7,23 +7,33 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server{
+public class Server {
+    private static final String usuario = "admin";
+    private static final String contrasena = "1234";
+
     public static void main(String[] args) {
         int puerto = 12345;
 
-        try(ServerSocket socket = new ServerSocket(puerto)){
+        try (ServerSocket serverSocket = new ServerSocket(puerto)) {
             System.out.println("Servidor iniciado en el puerto: " + puerto);
-            Socket clientSocket = socket.accept();
-            System.out.println("Cliente conectado: " + clientSocket.getInetAddress());
 
+            while (true) {
+                Socket clientSocket = serverSocket.accept();
+                System.out.println("Cliente conectado: " + clientSocket.getInetAddress());
+                new Thread(() -> gestionarCliente(clientSocket)).start();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void gestionarCliente(Socket clientSocket) {
+        try (
             BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            PrintWriter output = new PrintWriter(clientSocket.getOutputStream(), true);
+            PrintWriter output = new PrintWriter(clientSocket.getOutputStream(), true)
+        ) {
             String inputLine;
-
-            String usuario = "admin";
-            String contrasena = "1234";
-
-            while ((inputLine = input.readLine()) != null){
+            while ((inputLine = input.readLine()) != null) {
                 String[] credenciales = inputLine.split(":");
 
                 if (credenciales.length == 2) {
@@ -39,8 +49,16 @@ public class Server{
                     output.println("Formato incorrecto. Usa 'usuario:contraseña'");
                 }
             }
-        } catch (IOException e){
-                e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Error gestionando cliente: " + e.getMessage());
         }
+    }
+
+    public static String getUsuario() {
+        return usuario;
+    }
+
+    public static String getContrasena() {
+        return contrasena;
     }
 }

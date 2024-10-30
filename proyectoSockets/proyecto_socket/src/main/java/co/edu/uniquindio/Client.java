@@ -11,6 +11,7 @@ public class Client {
     public static void main(String[] args) {
         String hostname = "localhost";
         int port = 12345;
+        System.out.println("¡CLIENTE INICIADO!");
 
         try (Socket socket = new Socket(hostname, port);
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
@@ -18,9 +19,9 @@ public class Client {
             BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in))) {
 
             String userInput;
-            System.out.println("Escribe las credenciales en format 'usuario:contraseña':");
             userInput = stdIn.readLine();
             out.println(userInput);
+
             
             System.out.println("Respuesta del servidor: " + in.readLine());
         } catch (IOException e) {
