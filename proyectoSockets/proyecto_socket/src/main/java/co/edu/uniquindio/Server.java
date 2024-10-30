@@ -41,9 +41,9 @@ public class Server {
                     String contrasenaInput = credenciales[1];
 
                     if (usuarioInput.equals(usuario) && contrasenaInput.equals(contrasena)) {
-                        output.println("Inicio de sesión exitoso");
+                        output.println("OK");
                     } else {
-                        output.println("Credenciales incorrectas");
+                        output.println("ERROR!");
                     }
                 } else {
                     output.println("Formato incorrecto. Usa 'usuario:contraseña'");
